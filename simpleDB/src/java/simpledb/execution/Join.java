@@ -16,7 +16,6 @@ public class Join extends Operator {
     
     private JoinPredicate p;
     private OpIterator child1, child2;
-    private OpIterator[] children;
     private Tuple t1 = null, t2 = null;
     private boolean f = false;
     private List<Map.Entry<Tuple, Tuple>> pairs= new ArrayList<>();
@@ -38,7 +37,6 @@ public class Join extends Operator {
     }
 
     public JoinPredicate getJoinPredicate() {
-        // some code goes here
         return p;
     }
 
@@ -48,7 +46,6 @@ public class Join extends Operator {
      *       alias or table name.
      * */
     public String getJoinField1Name() {
-        // some code goes here
         return child1.getTupleDesc().getFieldName(p.getField1());
     }
 
@@ -58,7 +55,6 @@ public class Join extends Operator {
      *       alias or table name.
      * */
     public String getJoinField2Name() {
-        // some code goes here
         return child2.getTupleDesc().getFieldName(p.getField2());
     }
 
@@ -67,7 +63,6 @@ public class Join extends Operator {
      *      implementation logic.
      */
     public TupleDesc getTupleDesc() {
-        // some code goes here
         return TupleDesc.merge(child1.getTupleDesc(), child2.getTupleDesc());
     }
 
@@ -128,13 +123,11 @@ public class Join extends Operator {
 
     @Override
     public OpIterator[] getChildren() {
-        // some code goes here
-        return children;
+        return null;
     }
 
     @Override
     public void setChildren(OpIterator[] children) {
-        this.children = children;
     }
 
 }
