@@ -133,13 +133,11 @@ public class Aggregate extends Operator {
 
     @Override
     public OpIterator[] getChildren() {
-        // some code goes here
         return null;
     }
 
     @Override
     public void setChildren(OpIterator[] children) {
-        // some code goes here
     }
 
 }
