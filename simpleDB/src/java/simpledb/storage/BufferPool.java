@@ -270,8 +270,6 @@ public class BufferPool {
      * @param pid the ID of the page to unlock
      */
     public void unsafeReleasePage(TransactionId tid, PageId pid) {
-        // some code goes here
-        // not necessary for lab1|lab2
         lock.releaseLock(tid, pid);
     }
 
@@ -281,8 +279,6 @@ public class BufferPool {
      * @param tid the ID of the transaction requesting the unlock
      */
     public void transactionComplete(TransactionId tid) {
-        // some code goes here
-        // not necessary for lab1|lab2
         try {
             transactionComplete(tid, true);
         } catch (Exception e) {}
@@ -290,8 +286,6 @@ public class BufferPool {
 
     /** Return true if the specified transaction has a lock on the specified page */
     public boolean holdsLock(TransactionId tid, PageId pid) {
-        // some code goes here
-        // not necessary for lab1|lab2
         return lock.holdsLock(tid, pid);
     }
 
