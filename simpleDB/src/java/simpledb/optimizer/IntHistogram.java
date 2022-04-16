@@ -109,9 +109,7 @@ public class IntHistogram {
      *     join optimization. It may be needed if you want to
      *     implement a more efficient optimization
      * */
-    public double avgSelectivity()
-    {
-        // some code goes here
+    public double avgSelectivity() {
         return 1.0;
     }
     
@@ -119,7 +117,6 @@ public class IntHistogram {
      * @return A string describing this histogram, for debugging purposes
      */
     public String toString() {
-        // some code goes here
         return null;
     }
 }
