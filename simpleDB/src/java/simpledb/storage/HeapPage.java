@@ -71,8 +71,7 @@ public class HeapPage implements Page {
     /** Retrieve the number of tuples on this page.
         @return the number of tuples on this page
     */
-    private int getNumTuples() {        
-        // some code goes here
+    private int getNumTuples() {   
         return (int)Math.floor(((double)BufferPool.getPageSize() * 8) / ((double)td.getSize() * 8 + 1));
 
     }
@@ -96,15 +95,13 @@ public class HeapPage implements Page {
             return new HeapPage(pid,oldDataRef);
         } catch (IOException e) {
             e.printStackTrace();
-            //should never happen -- we parsed it OK before!
             System.exit(1);
         }
         return null;
     }
     
     public void setBeforeImage() {
-        synchronized(oldDataLock)
-        {
+        synchronized(oldDataLock) {
         oldData = getPageData().clone();
         }
     }
@@ -171,7 +168,6 @@ public class HeapPage implements Page {
             try {
                 dos.writeByte(b);
             } catch (IOException e) {
-                // this really shouldn't happen
                 e.printStackTrace();
             }
         }
@@ -233,7 +229,7 @@ public class HeapPage implements Page {
      */
     public static byte[] createEmptyPageData() {
         int len = BufferPool.getPageSize();
-        return new byte[len]; //all 0
+        return new byte[len];
     }
 
     /**
@@ -318,7 +314,6 @@ public class HeapPage implements Page {
      * Abstraction to fill or clear a slot on this page.
      */
     private void markSlotUsed(int i, boolean value) {
-        // some code goes here
         header[i / 8] ^= (1 << (i % 8));
     }
 
@@ -327,7 +322,6 @@ public class HeapPage implements Page {
      * (note that this iterator shouldn't return tuples in empty slots!)
      */
     public Iterator<Tuple> iterator() {
-        // some code goes here
         return Arrays.stream(tuples).filter(Objects::nonNull).iterator();
     } 
 
