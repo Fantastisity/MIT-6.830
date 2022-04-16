@@ -69,27 +69,21 @@ public class Predicate implements Serializable {
     /**
      * @return the field number
      */
-    public int getField()
-    {
-        // some code goes here
+    public int getField() {
         return field;
     }
 
     /**
      * @return the operator
      */
-    public Op getOp()
-    {
-        // some code goes here
+    public Op getOp() {
         return op;
     }
     
     /**
      * @return the operand
      */
-    public Field getOperand()
-    {
-        // some code goes here
+    public Field getOperand() {
         return operand;
     }
     
@@ -104,7 +98,6 @@ public class Predicate implements Serializable {
      * @return true if the comparison is true, false otherwise.
      */
     public boolean filter(Tuple t) {
-        // some code goes here
         Field tmp = t.getField(field);
         if (tmp == null) return false;
         return tmp.compare(op, operand);
@@ -115,7 +108,6 @@ public class Predicate implements Serializable {
      * operand_string"
      */
     public String toString() {
-        // some code goes here
         return "f = " + field + " op = " + op.toString() + " operand" + operand.toString();
     }
 }
