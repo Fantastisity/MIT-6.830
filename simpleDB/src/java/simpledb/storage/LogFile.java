@@ -573,11 +573,14 @@ public class LogFile {
                                 break;
                             case UPDATE_RECORD: {
                                 Page before = readPageData(raf), after = readPageData(raf);
+				PageId bfid = before.getId(), afid = after.getId();
                                 if (commitid.contains(record_tid)) {
-                                    Database.getCatalog().getDatabaseFile(after.getId().getTableId()).writePage(after);
-                                } else if (rollbackid.contains(record_tid)) {
-                                    Database.getCatalog().getDatabaseFile(before.getId().getTableId()).writePage(before);
-                                }
+                                    Database.getCatalog().getDatabaseFile(afid.getTableId()).writePage(after);
+				    Database.getBufferPool().discardPage(afid);
+				} else if (rollbackid.contains(record_tid)) {
+				    Database.getCatalog().getDatabaseFile(bfid.getTableId()).writePage(before);
+				    Database.getBufferPool().discardPage(bfid);
+				}
                             }
                         }
                         raf.skipBytes(LONG_SIZE);
